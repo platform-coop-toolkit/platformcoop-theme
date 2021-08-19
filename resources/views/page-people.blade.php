@@ -21,6 +21,10 @@
           'query' => $research_fellows_query,
         ],
         [
+          'title' => __('Affiliate Researchers', 'pcc'),
+          'query' => $research_affiliate_institute_query,
+        ],
+        [
           'title' => __('Affiliate Faculty', 'pcc'),
           'query' => $affiliate_faculty_query,
         ],
