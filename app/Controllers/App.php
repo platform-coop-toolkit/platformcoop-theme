@@ -63,7 +63,7 @@ class App extends Controller
 
     public function donateLink()
     {
-        return (function_exists('\PlatformCoop\Utils\get_config_option'))
+        return (function_exists('\PCCFramework\Utils\get_config_option'))
             ? get_config_option(
                 'donate_link',
                 'https://go.newschool.edu/s/1811/17/interior.aspx?sid=1811&gid=2&pgid=537&cid=1698&dids=34&bledit=1'
