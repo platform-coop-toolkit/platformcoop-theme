@@ -27,7 +27,7 @@ class Projects extends Controller
                   'image' => get_post_thumbnail_id($p->ID),
                   'slug' => get_post_field('post_name', $p->ID),
                   'content' => $p->post_content,
-                  'page_link_id' => get_page_link($page_id)
+                  'page_link_id' => get_page_link($p->ID)
                 ];
                 $page_id = null;
             }
