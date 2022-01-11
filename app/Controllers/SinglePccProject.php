@@ -84,7 +84,8 @@ class SinglePccProject extends Controller
                 $output[ $name ] = [
                     'name' => $name,
                     'short_title' => get_post_meta($researcher_id, 'pcc_person_short_title', true),
-                    'slug' => get_post($researcher_id)->post_name
+                    'slug' => get_post($researcher_id)->post_name,
+                    'page_link' => get_page_link($researcher_id),
                 ];
             }
         }
