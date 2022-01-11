@@ -215,6 +215,11 @@ class Page extends Controller
         return Page::peopleQuery('student-fellow');
     }
 
+    public function researchAffiliateInstituteQuery()
+    {
+        return Page::peopleQuery('research-affilliate-institute');
+    }
+
     public static function peopleQuery($role = false)
     {
         if ($role) {

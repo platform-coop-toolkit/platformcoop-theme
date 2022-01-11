@@ -9,20 +9,24 @@
     <div id="content">
       @foreach([
         [
+          'title' => __('Research Fellows', 'pcc'),
+          'query' => $research_fellows_query,
+        ],
+        [
+          'title' => __('Affiliate Researchers', 'pcc'),
+          'query' => $research_affiliate_institute_query,
+        ],
+        [
+          'title' => __('Affiliate Faculty', 'pcc'),
+          'query' => $affiliate_faculty_query,
+        ],
+        [
           'title' => __('Staff', 'pcc'),
           'query' => $staff_query,
         ],
         [
           'title' => __('Council of Advisors', 'pcc'),
           'query' => $council_query,
-        ],
-        [
-          'title' => __('Research Fellows', 'pcc'),
-          'query' => $research_fellows_query,
-        ],
-        [
-          'title' => __('Affiliate Faculty', 'pcc'),
-          'query' => $affiliate_faculty_query,
         ],
         [
           'title' => __('Student Fellows', 'pcc'),
