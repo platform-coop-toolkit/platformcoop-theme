@@ -7,7 +7,7 @@ use Sober\Controller\Controller;
 class Projects extends Controller
 {
 
-    public function projects()
+    public static function projects()
     {
         $output = [];
 
