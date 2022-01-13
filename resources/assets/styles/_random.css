@@ -3,7 +3,6 @@
   background: var(--blue);
   background: linear-gradient(90deg, var(--blue) 0%, var(--dark-blue) 100%);
   padding: calc(75 / var(--multiplier) * var(--base)) var(--gutter) var(--spacing-80);
-  margin-bottom: calc(140 / var(--multiplier) * var(--base) * -1);
 }
 
 .wp-block-group.donate h2 {
