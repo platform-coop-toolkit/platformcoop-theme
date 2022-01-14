@@ -85,7 +85,7 @@ class SinglePccProject extends Controller
                     'name' => $researcher->post_title,
                     'short_title' => get_post_meta($researcher_id, 'pcc_person_short_title', true),
                     'slug' => $researcher->post_name,
-                    'page_link' => "people/$researcher->post_name",
+                    'page_link' => get_home_url(null, "people/$researcher->post_name"),
                 ];
             }
         }
