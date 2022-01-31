@@ -23,6 +23,7 @@
   border-top: solid var(--border-medium) var(--light-red);
   background: var(--white);
   box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.16);
+  height: max-content;
 }
 
 .pcc-story .card {

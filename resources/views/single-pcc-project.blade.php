@@ -26,7 +26,11 @@
           <div class="col">
             <ul class="section-ul researcher-list">
               @foreach(SinglePccProject::researchers() as $researcher)
-                <li><a href="/people/{{ $researcher['slug'] }}/">{!! $researcher['name'] !!}</a></li>
+                <li>
+                  <a href="{{ $researcher['page_link'] }}">
+                    {!! $researcher['name'] !!}
+                  </a>
+                </li>
               @endforeach
             <ul>
           </div>

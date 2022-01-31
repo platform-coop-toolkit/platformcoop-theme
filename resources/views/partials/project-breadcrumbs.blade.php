@@ -1,7 +1,6 @@
 <div class="project-breadcrumbs">
   <p class="breadcrumb">
     <a href="/">{{ __('Home', 'pcc') }}</a>
-    <a href="/who-we-are/icde">{{ __('ICDE', 'pcc') }}</a>
     @if($post->post_parent)
       @foreach (SinglePccProject::ancestors() as $a)
         <a href="{{ $a['url'] }}">{{ $a['name'] }}</a>

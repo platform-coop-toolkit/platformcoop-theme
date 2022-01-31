@@ -7,7 +7,7 @@ use Sober\Controller\Controller;
 class Projects extends Controller
 {
 
-    public function projects()
+    public static function projects()
     {
         $output = [];
 
@@ -26,9 +26,12 @@ class Projects extends Controller
                   'title' => $p->post_title,
                   'image' => get_post_thumbnail_id($p->ID),
                   'slug' => get_post_field('post_name', $p->ID),
-                  'content' => $p->post_content,
-                  'page_link_id' => get_page_link($page_id)
+                  'page_link_id' => (!empty(get_page_by_path($p->post_name))) ? get_page_link($p->ID) : '#',
                 ];
+                $output[$p->ID]['content'] = (strlen($p->post_content) > 200) ?
+                    substr($p->post_content, 0, 200).'...' :
+                    $p->post_content;
+                    
                 $page_id = null;
             }
         }
