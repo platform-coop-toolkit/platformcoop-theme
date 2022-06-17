@@ -1,5 +1,5 @@
 {{--
-  Template Name: Blog
+  Template Name: Blog Category View
 --}}
 
 @php
