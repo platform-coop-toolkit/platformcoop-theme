@@ -16,6 +16,11 @@ class CustomFields
         \Carbon_Fields\Carbon_Fields::boot();
     }
 
+    public function load_fields() {
+        include 'fields/pages.php';
+
+        pages();
+    }
 }
 
 new CustomFields();
