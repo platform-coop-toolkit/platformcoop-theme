@@ -94,3 +94,9 @@ Container::getInstance()
             'blocks' => require dirname(__DIR__).'/config/blocks.php',
         ]);
     }, true);
+
+
+/**
+ * Start the Carbon Fields
+ */
+require get_template_directory() . '/../custom-fields/init.php';
