@@ -2,6 +2,19 @@
   Template Name: Blog
 --}}
 
+@php
+  $args_paginate = [
+    'base' => get_pagenum_link(1) . '%_%',
+    'format' => 'page/%#%',
+    'current' => max( 1, get_query_var( 'paged' ) ),
+    'total' => $blog_posts->max_num_pages,
+    'mid_size'    => 1,
+    'prev_text'    => __('‹ '),
+    'next_text'    => __(' ›'),
+  ];
+  $paginate_links = paginate_links($args_paginate);
+@endphp
+
 @extends('layouts.app')
 
 @section('content')
@@ -35,18 +48,10 @@
       </div>
 
       <nav class="navigation pagination" aria-label="Posts">
-        {!!
-          paginate_links([
-            'base' => get_pagenum_link(1) . '%_%',
-            'format' => 'page/%#%',
-            'current' => max( 1, get_query_var( 'paged' ) ),
-            'total' => $blog_posts->max_num_pages,
-            'mid_size'    => 1,
-            'prev_text'    => __('‹ '),
-            'next_text'    => __(' ›'),
-          ]);
+        @php
+          echo $paginate_links;
           wp_reset_postdata();
-        !!}
+        @endphp
       </nav>
     </div>
   </div>
