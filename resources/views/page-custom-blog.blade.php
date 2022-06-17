@@ -3,6 +3,20 @@
 --}}
 
 @php
+  global $paged;
+  $curpage = $paged ? $paged : 1;
+  $category = carbon_get_the_post_meta('category') ?? -1;
+
+  $args_posts = [
+    'post_type' => 'post',
+    'showposts' => 12,
+    'orderby' => 'date',
+    'order'   => 'DESC',
+    'cat' => $category,
+    'paged' => $paged
+  ];
+  $blog_posts = new WP_Query($args_posts);
+
   $args_paginate = [
     'base' => get_pagenum_link(1) . '%_%',
     'format' => 'page/%#%',
@@ -28,20 +42,6 @@
           </div>
           {!! get_search_form(false) !!}
         @endif
-
-        @php
-            global $paged;
-            $curpage = $paged ? $paged : 1;
-            $args = [
-              'post_type' => 'post',
-              'showposts' => 12,
-              'orderby' => 'date',
-              'order'   => 'DESC',
-              // 'cat' => 3,
-              'paged' => $paged
-            ];
-            $blog_posts = new WP_Query($args);
-        @endphp
         @while ($blog_posts->have_posts()) @php $blog_posts->the_post() @endphp
           @include('partials.content-'.get_post_type())
         @endwhile
