@@ -12,7 +12,7 @@ function pages() {
 
     $args = [
         'hide_empty' => 1,
-        'exclude' => array_merge([1], $uncat_categories),
+        'exclude' => $uncat_categories,
     ];
     $categories = array_column(get_categories($args), 'name', 'term_id');
 
