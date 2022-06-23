@@ -21,7 +21,8 @@
     "log1x/blade-svg-sage": "^2.0",
     "log1x/sage-directives": "^1.0",
     "roots/sage-lib": "~9.0.9",
-    "soberwp/controller": "~2.1.0"
+    "soberwp/controller": "~2.1.0",
+    "htmlburger/carbon-fields": "^3.3"
   },
   "require-dev": {
     "roots/sage-installer": "~1.6",

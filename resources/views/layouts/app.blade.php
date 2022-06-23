@@ -1,3 +1,14 @@
+@php
+  global $template;
+  $custom_temp = 'page-custom-blog.blade.php';
+  if (basename($template) === $custom_temp) {
+    add_filter('body_class', function ($classes) {
+      $classes = ['blog logged-in admin-bar no-customize-support wp-embed-responsive multi-author-false app-data index-data home-data'];
+      return $classes;
+    });
+  }
+@endphp
+
 <!doctype html>
 <html class="no-js" {!! get_language_attributes() !!}>
   @include('partials.head')
