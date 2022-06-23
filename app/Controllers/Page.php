@@ -219,6 +219,11 @@ class Page extends Controller
     {
         return Page::peopleQuery('research-affilliate-institute');
     }
+    
+    public function affiliatedAdvisorsInstituteQuery()
+    {
+        return Page::peopleQuery('affiliated-advisors-institute');
+    }
 
     public static function peopleQuery($role = false)
     {

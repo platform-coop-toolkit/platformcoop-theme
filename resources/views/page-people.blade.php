@@ -31,7 +31,11 @@
         [
           'title' => __('Student Fellows', 'pcc'),
           'query' => $student_fellows_query,
-        ]
+        ],
+        [
+          'title' => __('Affiliated Advisors', 'pcc'),
+          'query' => $affiliated_advisors_institute_query,
+        ],
         ] as $query)
         @if ($query['query']->have_posts())
         <div class="wp-block-group">
