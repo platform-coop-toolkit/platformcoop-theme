@@ -315,7 +315,7 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     font-size: 1rem;
     font-weight: normal;
     min-height: 0;
-    padding: 17px 1rem;
+    padding: 17px .7rem;
   }
 
   body:not(.project) .banner .nav .menu-item--languages button {
@@ -334,9 +334,9 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     content: "";
     height: var(--border-medium);
     left: 0;
-    margin-left: 1rem;
+    margin-left: .7rem;
     position: absolute;
-    width: calc(100% - 2rem);
+    width: calc(100% - 1.4rem);
   }
 
   body:not(.project) .banner .nav a:hover,
