@@ -25,6 +25,7 @@ textarea {
 [type="text"],
 [type="email"],
 [type="url"],
+[type="password"],
 textarea {
   background-color: var(--white);
   border: solid var(--border-thin) var(--grey);
@@ -45,11 +46,16 @@ textarea {
 [type="text"]:focus,
 [type="email"]:focus,
 [type="url"]:focus,
+[type="password"]:focus,
 textarea:focus {
   border: solid var(--border-medium) var(--blue);
   color: var(--dark-mint);
   outline: 0;
   padding: var(--spacing-8) var(--spacing-8) var(--spacing-5);
+}
+
+[type="checkbox"] {
+  appearance: auto;
 }
 
 [type="text"].wpcf7-not-valid,
