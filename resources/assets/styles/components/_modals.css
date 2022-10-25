@@ -1,0 +1,44 @@
+.modal-dialog {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modal-dialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-dialog > div {
+    width: 80vw;
+    position: relative;
+    margin: 150px auto;
+    padding-inline: var(--spacing-20);
+    padding-block: var(--spacing-16);
+    background: var(--off-white);
+    box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.16);
+}
+
+.close-modal {
+    position: absolute;
+    right: var(--spacing-20);
+    top: var(--spacing-16);
+    font-size: 24px;
+    border: none;
+}
+
+@media (--breakpoint-md) {
+    .modal-dialog > div {
+        width: 500px;
+    }
+}
