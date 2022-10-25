@@ -192,6 +192,12 @@ add_action('after_setup_theme', function () {
      * @see https://roots.io/sage/docs/theme-localization/
      */
     load_theme_textdomain('pcc', get_template_directory() . '/lang');
+
+    /**
+     * Add custom role for external users
+     */
+    add_role('external_user', __('External User', 'pcc'), []);
+
 }, 20);
 
 /**
