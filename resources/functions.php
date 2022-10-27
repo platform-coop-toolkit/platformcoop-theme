@@ -116,3 +116,23 @@ function logout_without_confirm($action, $result)
     }
 }
 add_action('check_admin_referer', 'logout_without_confirm', 10, 2);
+
+
+function user_has_role($user_id, $role_name)
+{
+    if (is_user_logged_in()) {
+        $user_meta = get_userdata($user_id);
+        $user_roles = $user_meta->roles;
+        return in_array($role_name, $user_roles);
+    }
+    return false;
+}
+
+function user_has_event($user_id, $event_id)
+{
+    $user_event_ids = get_user_meta($user_id, 'event_ids', true);
+    if (is_array($user_event_ids)) {
+        return in_array($event_id, $user_event_ids);
+    }
+    return false;
+}
