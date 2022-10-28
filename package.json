@@ -26,8 +26,8 @@
     "node": ">= 8.0.0"
   },
   "dependencies": {
-    "custom-event-polyfill": "^1.0.7",
-    "@popperjs/core": "^2.1.1"
+    "@popperjs/core": "^2.4.4",
+    "custom-event-polyfill": "^1.0.7"
   },
   "devDependencies": {
     "autoprefixer": "~9.8.0",

@@ -9,6 +9,18 @@
     <div id="content">
       @foreach([
         [
+          'title' => __('Research Fellows', 'pcc'),
+          'query' => $research_fellows_query,
+        ],
+        [
+          'title' => __('Affiliate Researchers', 'pcc'),
+          'query' => $research_affiliate_institute_query,
+        ],
+        [
+          'title' => __('Affiliate Faculty', 'pcc'),
+          'query' => $affiliate_faculty_query,
+        ],
+        [
           'title' => __('Staff', 'pcc'),
           'query' => $staff_query,
         ],
@@ -17,17 +29,13 @@
           'query' => $council_query,
         ],
         [
-          'title' => __('Research Fellows', 'pcc'),
-          'query' => $research_fellows_query,
-        ],
-        [
-          'title' => __('Affiliate Faculty', 'pcc'),
-          'query' => $affiliate_faculty_query,
-        ],
-        [
           'title' => __('Student Fellows', 'pcc'),
           'query' => $student_fellows_query,
-        ]
+        ],
+        [
+          'title' => __('Affiliated Advisors', 'pcc'),
+          'query' => $affiliated_advisors_institute_query,
+        ],
         ] as $query)
         @if ($query['query']->have_posts())
         <div class="wp-block-group">

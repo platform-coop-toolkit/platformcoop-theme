@@ -141,12 +141,6 @@
   background-color: var(--dark-blue);
 }
 
-.pcc-ribbon.ribbon li a:focus {
-  background-color: var(--dark-blue);
-  color: var(--off-white);
-  outline: 0;
-}
-
 .pcc-ribbon.ribbon li a[rel="current"]::after,
 .pcc-ribbon.ribbon li a.parent::after,
 .pcc-ribbon.ribbon li.current-menu-item a::after {
@@ -227,11 +221,6 @@
 
   .pcc-ribbon.ribbon li a:hover {
     background-color: transparent;
-  }
-
-  .pcc-ribbon.ribbon li a:active {
-    background-color: var(--blue);
-    color: var(--white);
   }
 
   .pcc-ribbon.ribbon li a:hover::after {

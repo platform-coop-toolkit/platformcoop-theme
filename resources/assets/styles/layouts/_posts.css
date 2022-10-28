@@ -18,10 +18,12 @@
 
 .archive .card,
 .blog .card,
-.pcc-story .card {
+.pcc-story .card,
+.projects .card {
   border-top: solid var(--border-medium) var(--light-red);
   background: var(--white);
   box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.16);
+  height: max-content;
 }
 
 .pcc-story .card {
@@ -35,21 +37,24 @@
 .archive .card:hover,
 .blog .card:hover,
 .pcc-story .card:hover,
-.pcc-event {
+.pcc-event,
+.projects .card:hover {
   border-top: solid var(--border-medium) var(--red);
   box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.4);
 }
 
 .archive .card:focus-within,
 .blog .card:focus-within,
-.pcc-story .card:focus-within {
+.pcc-story .card:focus-within,
+.projects .card:focus-within {
   border-top: solid var(--border-medium) var(--red);
   box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.4);
 }
 
 .archive .card a:focus,
 .blog .card a:focus,
-.pcc-story .card a:focus {
+.pcc-story .card a:focus,
+.projects .card a:focus {
   background-color: white;
   color: var(--blue);
 }
@@ -61,10 +66,20 @@
 .blog__details .title a,
 .blog__details time,
 .pcc-story__details .title a,
-.pcc-story__details .card__region {
+.pcc-story__details .card__region,
+.project__details .title,
+.project__details .desc {
   padding-left: var(--spacing-20);
   padding-right: var(--spacing-20);
   padding-top: var(--spacing-2);
+}
+
+.project__details .desc {
+  padding-bottom: var(--spacing-20);
+}
+
+.projects.wp-block-columns {
+  margin-bottom: 10rem;
 }
 
 .pcc-story__details,

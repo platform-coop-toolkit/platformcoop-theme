@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Platform Cooperativism Consortium \n"
 "Report-Msgid-Bugs-To: https://github.com/platform-coop-toolkit/pcc/issues\n"
-"POT-Creation-Date: 2020-08-05 18:01+0000\n"
+"POT-Creation-Date: 2020-11-10 23:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,6 +56,20 @@ msgstr ""
 
 #: app/filters.php:130
 msgid "Blocks"
+msgstr ""
+
+#: app/Controllers/Page.php:58
+#, php-format
+msgid "Photo by %1$s for %2$s"
+msgstr ""
+
+#: app/Controllers/Page.php:73 app/Controllers/Page.php:87
+#, php-format
+msgid "Photo by %1$s"
+msgstr ""
+
+#: app/Controllers/Page.php:169
+msgid "All"
 msgstr ""
 
 #: app/Controllers/SinglePccEvent.php:106
@@ -148,20 +162,6 @@ msgstr ""
 msgid "Blog"
 msgstr ""
 
-#: app/Controllers/Page.php:58
-#, php-format
-msgid "Photo by %1$s for %2$s"
-msgstr ""
-
-#: app/Controllers/Page.php:73 app/Controllers/Page.php:87
-#, php-format
-msgid "Photo by %1$s"
-msgstr ""
-
-#: app/Controllers/Page.php:169
-msgid "All"
-msgstr ""
-
 #: app/setup.php:146
 msgid "Primary Navigation"
 msgstr ""
@@ -182,12 +182,148 @@ msgstr ""
 msgid "You are currently editing the page that displays Community Stories."
 msgstr ""
 
-#: resources/views/partials/content-pcc-person.blade.php:22
-msgid "Topics:"
+#: resources/views/taxonomy.blade.php:18
+#: resources/views/page-stories.blade.php:22
+msgid "No stories found"
+msgstr ""
+
+#: resources/views/taxonomy.blade.php:19
+#: resources/views/page-stories.blade.php:23
+msgid "No stories matched the chosen criteria."
+msgstr ""
+
+#: resources/views/partials/content-single.blade.php:16
+#: resources/views/partials/content-single-pcc-story.blade.php:27
+msgid "Tags"
+msgstr ""
+
+#: resources/views/partials/breadcrumb.blade.php:4
+msgid "Back to"
+msgstr ""
+
+#: resources/views/partials/breadcrumb.blade.php:6
+#, python-format
+msgid "Back to %s"
+msgstr ""
+
+#: resources/views/partials/language-switcher.blade.php:4
+msgid "Language"
+msgstr ""
+
+#: resources/views/partials/page-header.blade.php:13
+msgid "Platform Cooperativism Consortium"
+msgstr ""
+
+#: resources/views/partials/entry-meta.blade.php:4
+#: resources/views/partials/page-meta.blade.php:3
+msgid "By"
+msgstr ""
+
+#: resources/views/partials/content-page-plain.blade.php:5
+msgid "Last updated"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event.blade.php:15
+msgid "See all participants"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event.blade.php:23
+msgid "Sponsors"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-person.blade.php:4
+#: resources/views/partials/content-single-pcc-person-participant.blade.php:4
+msgid "Bio"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-person.blade.php:13
+#: resources/views/partials/content-single-pcc-person-participant.blade.php:13
+msgid "Connect"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-person.blade.php:23
+msgid "Back to people"
+msgstr ""
+
+#: resources/views/partials/project-menu.blade.php:5
+#: resources/views/partials/event-ribbon.blade.php:5
+msgid "Scroll to the left"
+msgstr ""
+
+#: resources/views/partials/project-menu.blade.php:10
+#: resources/views/partials/event-ribbon.blade.php:21
+msgid "Scroll to the right"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event-participants.blade.php:3
+#, python-format
+msgid "Participants are shown in %s order."
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event-participants.blade.php:18
+msgid "No participants were found."
+msgstr ""
+
+#: resources/views/partials/stories-organization-filter.blade.php:3
+msgid "Show only stories by:"
+msgstr ""
+
+#: resources/views/partials/stories-organization-filter.blade.php:9
+msgid "Apply"
+msgstr ""
+
+#: resources/views/partials/stories-organization-filter.blade.php:10
+msgid "Clear"
 msgstr ""
 
 #: resources/views/partials/header.blade.php:5
 msgid "Menu"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event-program.blade.php:3
+#: resources/views/partials/content-single-pcc-event-program.blade.php:7
+#, python-format
+msgid "Day %d"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event-program.blade.php:20
+#, python-format
+msgid ""
+"The program for <em>%s</em> is not yet available. Thank you for your "
+"patience!"
+msgstr ""
+
+#: resources/views/partials/comments.blade.php:21
+msgid "&larr; Older comments"
+msgstr ""
+
+#: resources/views/partials/comments.blade.php:24
+msgid "Newer comments &rarr;"
+msgstr ""
+
+#: resources/views/partials/comments.blade.php:33
+msgid "Comments are closed."
+msgstr ""
+
+#: resources/views/partials/project-breadcrumbs.blade.php:4
+msgid "ICDE"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event-session.blade.php:6
+msgid "Speakers"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-event-session.blade.php:18
+msgid "Back to program"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-story.blade.php:17
+#: resources/views/partials/stories-taxonomy-menu.blade.php:4
+msgid "Sectors"
+msgstr ""
+
+#: resources/views/partials/content-single-pcc-story.blade.php:22
+msgid "Regions"
 msgstr ""
 
 #: resources/views/partials/footer.blade.php:6
@@ -236,154 +372,28 @@ msgid ""
 "Permissions beyond the scope of this license are available to cooperatives."
 msgstr ""
 
-#: resources/views/partials/content-single-pcc-event-session.blade.php:6
-msgid "Speakers"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event-session.blade.php:18
-msgid "Back to program"
+#: resources/views/partials/content-pcc-person.blade.php:22
+msgid "Topics:"
 msgstr ""
 
 #: resources/views/partials/stories-taxonomy-menu.blade.php:2
 msgid "Filter stories by:"
 msgstr ""
 
-#: resources/views/partials/stories-taxonomy-menu.blade.php:4
-#: resources/views/partials/content-single-pcc-story.blade.php:17
-msgid "Sectors"
-msgstr ""
-
 #: resources/views/partials/stories-taxonomy-menu.blade.php:9
 msgid "Region"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event-participants.blade.php:3
-#, python-format
-msgid "Participants are shown in %s order."
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event-participants.blade.php:18
-msgid "No participants were found."
-msgstr ""
-
-#: resources/views/partials/entry-meta.blade.php:4
-#: resources/views/partials/page-meta.blade.php:3
-msgid "By"
-msgstr ""
-
-#: resources/views/partials/content-single.blade.php:16
-#: resources/views/partials/content-single-pcc-story.blade.php:27
-msgid "Tags"
 msgstr ""
 
 #: resources/views/partials/content-page-stories.blade.php:19
 msgid "Region:"
 msgstr ""
 
-#: resources/views/partials/stories-organization-filter.blade.php:3
-msgid "Show only stories by:"
-msgstr ""
-
-#: resources/views/partials/stories-organization-filter.blade.php:9
-msgid "Apply"
-msgstr ""
-
-#: resources/views/partials/stories-organization-filter.blade.php:10
-msgid "Clear"
-msgstr ""
-
-#: resources/views/partials/comments.blade.php:21
-msgid "&larr; Older comments"
-msgstr ""
-
-#: resources/views/partials/comments.blade.php:24
-msgid "Newer comments &rarr;"
-msgstr ""
-
-#: resources/views/partials/comments.blade.php:33
-msgid "Comments are closed."
-msgstr ""
-
-#: resources/views/partials/project-menu.blade.php:5
-#: resources/views/partials/event-ribbon.blade.php:5
-msgid "Scroll to the left"
-msgstr ""
-
-#: resources/views/partials/project-menu.blade.php:10
-#: resources/views/partials/event-ribbon.blade.php:21
-msgid "Scroll to the right"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-person.blade.php:4
-#: resources/views/partials/content-single-pcc-person-participant.blade.php:4
-msgid "Bio"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-person.blade.php:13
-#: resources/views/partials/content-single-pcc-person-participant.blade.php:13
-msgid "Connect"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-person.blade.php:23
-msgid "Back to people"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-person-participant.blade.php:23
-msgid "Back to participants"
-msgstr ""
-
-#: resources/views/partials/breadcrumb.blade.php:4
-msgid "Back to"
-msgstr ""
-
-#: resources/views/partials/breadcrumb.blade.php:6
-#, python-format
-msgid "Back to %s"
-msgstr ""
-
 #: resources/views/partials/event-ribbon.blade.php:24
 msgid "Register Now"
 msgstr ""
 
-#: resources/views/partials/content-single-pcc-story.blade.php:22
-msgid "Regions"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event-program.blade.php:3
-#: resources/views/partials/content-single-pcc-event-program.blade.php:7
-#, python-format
-msgid "Day %d"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event-program.blade.php:20
-#, python-format
-msgid ""
-"The program for <em>%s</em> is not yet available. Thank you for your "
-"patience!"
-msgstr ""
-
-#: resources/views/partials/language-switcher.blade.php:4
-msgid "Language"
-msgstr ""
-
-#: resources/views/partials/content-page-plain.blade.php:5
-msgid "Last updated"
-msgstr ""
-
-#: resources/views/partials/page-header.blade.php:13
-msgid "Platform Cooperativism Consortium"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event.blade.php:15
-msgid "See all participants"
-msgstr ""
-
-#: resources/views/partials/content-single-pcc-event.blade.php:23
-msgid "Sponsors"
-msgstr ""
-
-#: resources/views/partials/project-breadcrumbs.blade.php:4
-msgid "ICDE"
+#: resources/views/partials/content-single-pcc-person-participant.blade.php:23
+msgid "Back to participants"
 msgstr ""
 
 #: resources/views/page-people.blade.php:12
@@ -410,14 +420,16 @@ msgstr ""
 msgid "Sorry, your browser doesn't support embedded videos."
 msgstr ""
 
-#: resources/views/taxonomy.blade.php:18
-#: resources/views/page-stories.blade.php:22
-msgid "No stories found"
+#: resources/views/search.blade.php:8 resources/views/index.blade.php:13
+msgid "Sorry, no results were found."
 msgstr ""
 
-#: resources/views/taxonomy.blade.php:19
-#: resources/views/page-stories.blade.php:23
-msgid "No stories matched the chosen criteria."
+#: resources/views/single-pcc-project.blade.php:15
+msgid "About"
+msgstr ""
+
+#: resources/views/single-pcc-project.blade.php:21
+msgid "Researchers"
 msgstr ""
 
 #: resources/views/404.blade.php:7
@@ -428,14 +440,6 @@ msgstr ""
 msgid "Back to home"
 msgstr ""
 
-#: resources/views/search.blade.php:8 resources/views/index.blade.php:13
-msgid "Sorry, no results were found."
-msgstr ""
-
-#: resources/views/layouts/app.blade.php:5
-msgid "Skip to main content"
-msgstr ""
-
 #: resources/views/index.blade.php:7
 msgid "Featured"
 msgstr ""
@@ -444,10 +448,6 @@ msgstr ""
 msgid "Most recent"
 msgstr ""
 
-#: resources/views/single-pcc-project.blade.php:15
-msgid "About"
-msgstr ""
-
-#: resources/views/single-pcc-project.blade.php:21
-msgid "Researchers"
+#: resources/views/layouts/app.blade.php:5
+msgid "Skip to main content"
 msgstr ""

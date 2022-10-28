@@ -80,15 +80,15 @@ class SinglePccProject extends Controller
 
         if ($researchers) {
             foreach ($researchers as $researcher_id) {
-                $name = get_the_title($researcher_id);
-                $output[ $name ] = [
-                    'name' => $name,
+                $researcher = get_post($researcher_id);
+                $output[ $researcher->post_title ] = [
+                    'name' => $researcher->post_title,
                     'short_title' => get_post_meta($researcher_id, 'pcc_person_short_title', true),
-                    'slug' => get_post($researcher_id)->post_name
+                    'slug' => $researcher->post_name,
+                    'page_link' => get_home_url(null, "people/$researcher->post_name"),
                 ];
             }
         }
-
         return $output;
     }
 }

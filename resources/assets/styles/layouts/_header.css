@@ -243,7 +243,7 @@
   width: 2em;
 }
 
-body:not(.project) .banner .nav .menu-item--languages button svg {
+body .banner .nav .menu-item--languages button svg {
   display: none;
 }
 
@@ -271,11 +271,11 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     margin-top: 2.4rem;
   }
 
-  body:not(.project) .menu-toggle {
+  body .menu-toggle {
     display: none;
   }
 
-  body:not(.project) .menu-toggle[aria-expanded="true"] + .banner .nav {
+  body .menu-toggle[aria-expanded="true"] + .banner .nav {
     display: flex;
     float: right;
     position: relative;
@@ -295,7 +295,7 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     word-wrap: normal;
   }
 
-  body:not(.project) .banner .nav {
+  body .banner .nav {
     align-items: flex-end;
     background-color: transparent;
     display: flex;
@@ -308,8 +308,8 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     width: auto;
   }
 
-  body:not(.project) .banner .nav a,
-  body:not(.project) .banner .nav button {
+  body .banner .nav a,
+  body .banner .nav button {
     background: var(--white);
     color: var(--dark-blue);
     font-size: 1rem;
@@ -318,17 +318,17 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     padding: 17px .7rem;
   }
 
-  body:not(.project) .banner .nav .menu-item--languages button {
+  body .banner .nav .menu-item--languages button {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
   }
 
-  body:not(.project) .banner .nav .menu-item--languages button svg {
+  body .banner .nav .menu-item--languages button svg {
     display: inline;
   }
 
-  body:not(.project) .banner .nav a::after,
-  body:not(.project) .banner .nav button::after {
+  body .banner .nav a::after,
+  body .banner .nav button::after {
     background-color: transparent;
     bottom: 0;
     content: "";
@@ -339,134 +339,134 @@ body:not(.project) .banner .nav .menu-item--languages button svg {
     width: calc(100% - 1.4rem);
   }
 
-  body:not(.project) .banner .nav a:hover,
-  body:not(.project) .banner .nav button:hover {
+  body .banner .nav a:hover,
+  body .banner .nav button:hover {
     background-color: white;
     color: var(--dark-blue);
     border-left-color: transparent;
   }
 
-  body:not(.project) .banner .nav a:hover::after,
-  body:not(.project) .banner .nav button:hover::after {
+  body .banner .nav a:hover::after,
+  body .banner .nav button:hover::after {
     background-color: var(--dark-blue);
   }
 
-  body:not(.project) .banner .nav a:focus,
-  body:not(.project) .banner .nav button:focus {
+  body .banner .nav a:focus,
+  body .banner .nav button:focus {
     background-color: var(--dark-blue);
     color: var(--off-white);
     border-left-color: transparent;
     outline: 0;
   }
 
-  body:not(.project) .banner .nav button .icon {
+  body .banner .nav button .icon {
     background-color: var(--dark-blue);
     margin-left: 8px;
     margin-top: 6px;
   }
 
-  body:not(.project) .banner .nav button:focus .icon {
+  body .banner .nav button:focus .icon {
     background-color: var(--off-white);
   }
 
-  body:not(.project) .banner .nav .current-menu-parent button .icon {
+  body .banner .nav .current-menu-parent button .icon {
     background-color: var(--dark-mint);
   }
 
-  body:not(.project) .banner .nav .current-menu-parent button:hover .icon {
+  body .banner .nav .current-menu-parent button:hover .icon {
     background-color: var(--dark-blue);
   }
 
-  body:not(.project) .banner .nav .current-menu-parent button:focus {
+  body .banner .nav .current-menu-parent button:focus {
     color: white;
     background-color: var(--dark-blue);
   }
 
-  body:not(.project) .banner .nav .current-menu-parent button:focus .icon {
+  body .banner .nav .current-menu-parent button:focus .icon {
     background-color: var(--white);
   }
 
-  body:not(.project) .banner .nav [aria-current],
-  body:not(.project) .banner .nav .current-menu-parent button {
+  body .banner .nav [aria-current],
+  body .banner .nav .current-menu-parent button {
     color: var(--dark-mint);
     background-color: var(--white);
     border-left-color: transparent;
   }
 
-  body:not(.project) .banner .nav [aria-current]::after,
-  body:not(.project) .banner .nav .current-menu-parent button::after {
+  body .banner .nav [aria-current]::after,
+  body .banner .nav .current-menu-parent button::after {
     background-color: var(--red);
   }
 
-  body:not(.project) .banner .nav [aria-current]:hover,
-  body:not(.project) .banner .nav .current-menu-parent button:hover {
+  body .banner .nav [aria-current]:hover,
+  body .banner .nav .current-menu-parent button:hover {
     background-color: var(--white);
     border-left-color: transparent;
   }
 
-  body:not(.project) .banner .nav [aria-current]:hover::after,
-  body:not(.project) .banner .nav .current-menu-parent button:hover::after {
+  body .banner .nav [aria-current]:hover::after,
+  body .banner .nav .current-menu-parent button:hover::after {
     background-color: var(--dark-blue);
   }
 
-  body:not(.project) .banner .nav [aria-current]:focus,
-  body:not(.project) .banner .nav .current-menu-parent button:focus {
+  body .banner .nav [aria-current]:focus,
+  body .banner .nav .current-menu-parent button:focus {
     border-left-color: transparent;
   }
 
-  body:not(.project) .banner .nav [aria-current]:focus::after,
-  body:not(.project) .banner .nav .current-menu-parent button:focus::after {
+  body .banner .nav [aria-current]:focus::after,
+  body .banner .nav .current-menu-parent button:focus::after {
     background-color: var(--dark-blue);
   }
 
-  body:not(.project) .banner .nav [aria-current]:focus {
+  body .banner .nav [aria-current]:focus {
     color: white;
     background: var(--dark-blue);
   }
 
-  body:not(.project) .banner .nav ul {
+  body .banner .nav ul {
     border: 1px solid var(--light-grey);
     border-radius: var(--border-radius);
     box-shadow: 0 var(--border-medium) var(--border-wide) rgba(0, 0, 0, 0.16);
     position: absolute;
   }
 
-  body:not(.project) .banner .nav ul a:hover,
-  body:not(.project) .banner .nav ul [aria-current]:hover,
-  body:not(.project) .banner .nav ul a:focus,
-  body:not(.project) .banner .nav ul [aria-current]:focus {
+  body .banner .nav ul a:hover,
+  body .banner .nav ul [aria-current]:hover,
+  body .banner .nav ul a:focus,
+  body .banner .nav ul [aria-current]:focus {
     color: white;
     background: var(--blue);
     border-left-color: transparent;
   }
 
-  body:not(.project) .banner .nav ul a {
+  body .banner .nav ul a {
     padding: 1rem 14px;
   }
 
-  body:not(.project) .banner .nav ul a::after {
+  body .banner .nav ul a::after {
     display: none;
   }
 
-  body:not(.project) .banner .nav ul [aria-current] {
+  body .banner .nav ul [aria-current] {
     border-left-color: var(--red);
   }
 
-  body:not(.project) .banner .nav li {
+  body .banner .nav li {
     border-top: 0;
   }
 
-  body:not(.project) .banner .nav > li + li {
-    margin-left: 18px;
+  body .banner .nav > li + li {
+    margin-left: 5px;
   }
 
-  body:not(.project) .no-js .banner .nav {
+  body .no-js .banner .nav {
     display: flex;
     float: right;
     position: relative;
   }
 
-  body:not(.project) .no-js .banner .nav ul {
+  body .no-js .banner .nav ul {
     display: none;
   }
 }

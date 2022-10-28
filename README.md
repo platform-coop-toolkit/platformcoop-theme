@@ -14,6 +14,6 @@ See [Sage 9 docs](https://roots.io/sage/docs/) for basic information. Commands f
 - `npm run start`: Start watching assets and rebuild on save (with BrowserSync live reloading)
 - `npm run lint`: Check CSS and JavaScript coding standards
 - `composer install`: Install PHP dependencies
-- `composer standards`: Check PHP coding standards
+- `composer lint`: Check PHP coding standards
 
 The Platform Cooperativism Consortium theme uses [CSS with PostCSS](https://postcss.org/) instead of SCSS, and includes the [sage-directives](https://github.com/Log1x/sage-directives) and [blade-svg-sage](https://github.com/Log1x/blade-svg-sage) Composer packages.

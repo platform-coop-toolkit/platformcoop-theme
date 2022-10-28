@@ -100,3 +100,8 @@ Container::getInstance()
  * Include helper function ajax to events page
  */
 include(get_template_directory() . '/helpers/events-ajax.php');
+
+/**
+ * Start the Carbon Fields
+ */
+require get_template_directory() . '/../custom-fields/init.php';
