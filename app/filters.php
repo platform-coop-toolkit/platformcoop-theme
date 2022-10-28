@@ -124,7 +124,7 @@ add_filter('excerpt_more', function () {
  * Minimize inserter interactions.
  * @link https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
  */
-add_filter('block_categories', function ($categories, $post) {
+add_filter('block_categories_all', function ($categories, $post) {
     return [[
         'slug'  => 'blocks',
         'title' => __('Blocks', 'pcc'),
@@ -257,3 +257,11 @@ add_filter('wp_nav_menu_items', function ($items, $args) {
     }
     return $items;
 }, 10, 2);
+
+/**
+ * Remove admin bar from logged-in external users
+ */
+add_filter('show_admin_bar', function () {
+    $excluded_roles = [ 'external_user' ];
+    return is_user_logged_in() && ! array_intersect( wp_get_current_user()->roles, $excluded_roles);
+}, 26);

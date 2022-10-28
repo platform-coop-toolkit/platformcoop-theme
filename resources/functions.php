@@ -105,3 +105,93 @@ include(get_template_directory() . '/helpers/events-ajax.php');
  * Start the Carbon Fields
  */
 require get_template_directory() . '/../custom-fields/init.php';
+
+
+/**
+ * Checks if the user has a certain role
+ *
+ * @param int $user_id
+ * @param string $role_name
+ * @return bool
+ */
+function user_has_role($user_id, $role_name)
+{
+    if (is_user_logged_in()) {
+        $user_meta = get_userdata($user_id);
+        $user_roles = $user_meta->roles;
+        return in_array($role_name, $user_roles);
+    }
+    return false;
+}
+
+
+/**
+ * Checks if the user is included in an event
+ *
+ * @param int $user_id
+ * @param int $event_id
+ * @return bool
+ */
+function user_has_event($user_id, $event_id)
+{
+    $user_event_ids = get_user_meta($user_id, 'event_ids', true);
+    if (is_array($user_event_ids)) {
+        return in_array($event_id, $user_event_ids);
+    }
+    return false;
+}
+
+
+/**
+ * Log-in via AJAX
+ *
+ * @return void
+ */
+function login_menu()
+{
+    $user_by_email = get_user_by('email', $_POST['log']);
+    $user_name = !empty($user_by_email->user_login) ? $user_by_email->user_login : $_POST['log']; 
+    $password = $_POST['pwd'];
+    $rememberme = $_POST['rememberme'];
+
+    $user = wp_signon([
+        'user_login' => $user_name,
+        'user_password' => $password,
+        'remember' => $rememberme,
+    ]);
+
+    if (is_wp_error($user)) {
+        wp_send_json_error([
+            'message' => $user->get_error_message()
+        ]);
+    }
+    wp_send_json_success(true);
+}
+add_action('wp_ajax_nopriv_login_menu', 'login_menu', 0);
+add_action('wp_ajax_login_menu', 'login_menu', 0);
+
+
+/**
+ * Log-out via AJAX
+ *
+ * @return void
+ */
+function logout_menu()
+{
+    wp_logout();
+    wp_send_json(true);
+}
+add_action('wp_ajax_nopriv_logout_menu', 'logout_menu', 0);
+add_action('wp_ajax_logout_menu', 'logout_menu', 0);
+
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('login', get_template_directory_uri() . '/assets/scripts/login.js', array('jquery'), false, true);
+    wp_localize_script('login', 'wpObj', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+    ));
+});
+
+
+
+

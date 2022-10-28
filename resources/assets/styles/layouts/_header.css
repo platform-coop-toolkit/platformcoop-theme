@@ -21,6 +21,7 @@
   padding-top: var(--spacing-16);
   position: relative;
   width: var(--spacing-144);
+  margin-right: auto;
 }
 
 .brand svg {
@@ -85,7 +86,7 @@
   margin: var(--spacing-18) calc(-1 * (var(--spacing-30) - var(--spacing-8))) var(--spacing-18) 0;
   padding: var(--spacing-8);
   height: var(--spacing-36);
-  width: var(--spacing-36);
+  width: var(--spacing-52);
   z-index: 2;
 }
 
@@ -114,6 +115,11 @@
 .banner .menu-toggle[aria-expanded="true"] + .nav {
   display: block;
   z-index: 1;
+}
+
+.banner .container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 .banner .nav {
@@ -225,6 +231,32 @@
   margin-top: 0;
 }
 
+.banner a.login {
+  display: flex;
+  align-items: center;
+  padding: 17px 0.7rem;
+  background-color: transparent;
+  border: 0;
+  color: var(--dark-blue);
+}
+
+.banner a.login::after {
+  display: none;
+}
+
+.banner a.login span {
+  display: none;
+}
+
+.banner a.login svg {
+  fill: var(--dark-blue);
+}
+
+.banner a.login span + svg,
+.banner a.login svg + span {
+  margin-left: 8px;
+}
+
 .no-js .banner .nav {
   display: block;
   float: left;
@@ -241,6 +273,12 @@
   height: 2em;
   margin-bottom: -0.25em;
   width: 2em;
+}
+
+.icon--md {
+  height: 1.5em;
+  margin-bottom: 0;
+  width: 1.5em;
 }
 
 body .banner .nav .menu-item--languages button svg {
@@ -260,6 +298,7 @@ body .banner .nav .menu-item--languages button svg {
     height: 109.5px;
     padding: 39.5px 0 18px;
     width: 186px;
+    margin-right: 0;
   }
 
   .brand svg {
@@ -295,6 +334,10 @@ body .banner .nav .menu-item--languages button svg {
     word-wrap: normal;
   }
 
+  .banner a.login span {
+    display: block;
+  }
+
   body .banner .nav {
     align-items: flex-end;
     background-color: transparent;
@@ -308,6 +351,10 @@ body .banner .nav .menu-item--languages button svg {
     width: auto;
   }
 
+  body .banner nav a.login {
+    display: none;
+  }
+
   body .banner .nav a,
   body .banner .nav button {
     background: var(--white);
@@ -315,7 +362,7 @@ body .banner .nav .menu-item--languages button svg {
     font-size: 1rem;
     font-weight: normal;
     min-height: 0;
-    padding: 17px .7rem;
+    padding: 17px .6rem;
   }
 
   body .banner .nav .menu-item--languages button {
@@ -334,9 +381,9 @@ body .banner .nav .menu-item--languages button svg {
     content: "";
     height: var(--border-medium);
     left: 0;
-    margin-left: .7rem;
+    margin-left: .6rem;
     position: absolute;
-    width: calc(100% - 1.4rem);
+    width: calc(100% - 1.2rem);
   }
 
   body .banner .nav a:hover,
@@ -468,5 +515,13 @@ body .banner .nav .menu-item--languages button svg {
 
   body .no-js .banner .nav ul {
     display: none;
+  }
+
+  .banner .container {
+    justify-content: space-between;
+  }
+
+  .banner a.login {
+    align-items: flex-end;
   }
 }
