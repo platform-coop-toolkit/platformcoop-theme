@@ -257,3 +257,11 @@ add_filter('wp_nav_menu_items', function ($items, $args) {
     }
     return $items;
 }, 10, 2);
+
+/**
+ * Remove admin bar from logged-in external users
+ */
+add_filter('show_admin_bar', function () {
+    $excluded_roles = [ 'external_user' ];
+    return is_user_logged_in() && ! array_intersect( wp_get_current_user()->roles, $excluded_roles);
+}, 26);
