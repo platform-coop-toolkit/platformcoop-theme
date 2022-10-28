@@ -6,6 +6,7 @@
 
 use Roots\Sage\Config;
 use Roots\Sage\Container;
+use app\Controllers\Events;
 
 /**
  * Helper function for prettying up errors
@@ -41,7 +42,7 @@ if (version_compare('4.7.0', get_bloginfo('version'), '>=')) {
  * Ensure dependencies are loaded
  */
 if (!class_exists('Roots\\Sage\\Container')) {
-    if (!file_exists($composer = __DIR__.'/../vendor/autoload.php')) {
+    if (!file_exists($composer = __DIR__ . '/../vendor/autoload.php')) {
         $sage_error(
             __('You must run <code>composer install</code> from the theme directory.', 'pcc'),
             __('Autoloader not found.', 'pcc')
@@ -88,9 +89,14 @@ array_map(
 Container::getInstance()
     ->bindIf('config', function () {
         return new Config([
-            'assets' => require dirname(__DIR__).'/config/assets.php',
-            'theme' => require dirname(__DIR__).'/config/theme.php',
-            'view' => require dirname(__DIR__).'/config/view.php',
-            'blocks' => require dirname(__DIR__).'/config/blocks.php',
+            'assets' => require dirname(__DIR__) . '/config/assets.php',
+            'theme' => require dirname(__DIR__) . '/config/theme.php',
+            'view' => require dirname(__DIR__) . '/config/view.php',
+            'blocks' => require dirname(__DIR__) . '/config/blocks.php',
         ]);
     }, true);
+
+/**
+ * Include helper function ajax to events page
+ */
+include(get_template_directory() . '/helpers/events-ajax.php');
