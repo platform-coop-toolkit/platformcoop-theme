@@ -41,7 +41,7 @@ if (version_compare('4.7.0', get_bloginfo('version'), '>=')) {
  * Ensure dependencies are loaded
  */
 if (!class_exists('Roots\\Sage\\Container')) {
-    if (!file_exists($composer = __DIR__.'/../vendor/autoload.php')) {
+    if (!file_exists($composer = __DIR__ . '/../vendor/autoload.php')) {
         $sage_error(
             __('You must run <code>composer install</code> from the theme directory.', 'pcc'),
             __('Autoloader not found.', 'pcc')
@@ -88,10 +88,10 @@ array_map(
 Container::getInstance()
     ->bindIf('config', function () {
         return new Config([
-            'assets' => require dirname(__DIR__).'/config/assets.php',
-            'theme' => require dirname(__DIR__).'/config/theme.php',
-            'view' => require dirname(__DIR__).'/config/view.php',
-            'blocks' => require dirname(__DIR__).'/config/blocks.php',
+            'assets' => require dirname(__DIR__) . '/config/assets.php',
+            'theme' => require dirname(__DIR__) . '/config/theme.php',
+            'view' => require dirname(__DIR__) . '/config/view.php',
+            'blocks' => require dirname(__DIR__) . '/config/blocks.php',
         ]);
     }, true);
 
@@ -102,22 +102,13 @@ Container::getInstance()
 require get_template_directory() . '/../custom-fields/init.php';
 
 
-
-function logout_without_confirm($action, $result)
-{
-    /**
-     * Allow logout without confirmation
-     */
-    if ($action == "log-out" && !isset($_GET['_wpnonce'])) {
-        $redirect_to = isset($_REQUEST['redirect_to']) ? $_REQUEST['redirect_to'] : home_url('/');
-        $location = str_replace('&amp;', '&', wp_logout_url($redirect_to));
-        header("Location: $location");
-        die;
-    }
-}
-add_action('check_admin_referer', 'logout_without_confirm', 10, 2);
-
-
+/**
+ * Checks if the user has a certain role
+ *
+ * @param int $user_id
+ * @param string $role_name
+ * @return bool
+ */
 function user_has_role($user_id, $role_name)
 {
     if (is_user_logged_in()) {
@@ -128,6 +119,14 @@ function user_has_role($user_id, $role_name)
     return false;
 }
 
+
+/**
+ * Checks if the user is included in an event
+ *
+ * @param int $user_id
+ * @param int $event_id
+ * @return bool
+ */
 function user_has_event($user_id, $event_id)
 {
     $user_event_ids = get_user_meta($user_id, 'event_ids', true);
@@ -136,3 +135,58 @@ function user_has_event($user_id, $event_id)
     }
     return false;
 }
+
+
+/**
+ * Log-in via AJAX
+ *
+ * @return void
+ */
+function login_menu()
+{
+    $user_by_email = get_user_by('email', $_POST['log']);
+    $user_name = !empty($user_by_email->user_login) ? $user_by_email->user_login : $_POST['log']; 
+    $password = $_POST['pwd'];
+    $rememberme = $_POST['rememberme'];
+
+    $user = wp_signon([
+        'user_login' => $user_name,
+        'user_password' => $password,
+        'remember' => $rememberme,
+    ]);
+
+    if (is_wp_error($user)) {
+        wp_send_json_error([
+            'message' => $user->get_error_message()
+        ]);
+    }
+    wp_send_json_success(true);
+}
+add_action('wp_ajax_nopriv_login_menu', 'login_menu', 0);
+add_action('wp_ajax_login_menu', 'login_menu', 0);
+
+
+/**
+ * Log-out via AJAX
+ *
+ * @return void
+ */
+function logout_menu()
+{
+    wp_logout();
+    wp_send_json(true);
+}
+add_action('wp_ajax_nopriv_logout_menu', 'logout_menu', 0);
+add_action('wp_ajax_logout_menu', 'logout_menu', 0);
+
+
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_script('login', get_template_directory_uri() . '/assets/scripts/login.js', array('jquery'), false, true);
+    wp_localize_script('login', 'wpObj', array(
+        'ajaxUrl' => admin_url('admin-ajax.php'),
+    ));
+});
+
+
+
+
