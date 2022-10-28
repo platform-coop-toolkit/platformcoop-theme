@@ -124,7 +124,7 @@ add_filter('excerpt_more', function () {
  * Minimize inserter interactions.
  * @link https://developer.wordpress.org/block-editor/developers/filters/block-filters/#managing-block-categories
  */
-add_filter('block_categories', function ($categories, $post) {
+add_filter('block_categories_all', function ($categories, $post) {
     return [[
         'slug'  => 'blocks',
         'title' => __('Blocks', 'pcc'),
