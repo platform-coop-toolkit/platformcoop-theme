@@ -28,9 +28,14 @@
   border-top-color: var(--yellow);
 }
 
+.pcc-event {
+  border-top: solid var(--border-medium) var(--light-red);
+}
+
 .archive .card:hover,
 .blog .card:hover,
-.pcc-story .card:hover {
+.pcc-story .card:hover,
+.pcc-event {
   border-top: solid var(--border-medium) var(--red);
   box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.4);
 }
