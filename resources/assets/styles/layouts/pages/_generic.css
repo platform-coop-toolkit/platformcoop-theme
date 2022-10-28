@@ -2,7 +2,7 @@
   background-color: var(--white);
 }
 
-.page main .content {
+.page main .content:not(.pcc-event) {
   background-color: var(--off-white);
   padding-top: calc(var(--spacing-102) + var(--spacing-2));
 }

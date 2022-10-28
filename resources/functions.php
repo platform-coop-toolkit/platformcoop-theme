@@ -6,6 +6,7 @@
 
 use Roots\Sage\Config;
 use Roots\Sage\Container;
+use app\Controllers\Events;
 
 /**
  * Helper function for prettying up errors
@@ -95,6 +96,10 @@ Container::getInstance()
         ]);
     }, true);
 
+/**
+ * Include helper function ajax to events page
+ */
+include(get_template_directory() . '/helpers/events-ajax.php');
 
 /**
  * Start the Carbon Fields

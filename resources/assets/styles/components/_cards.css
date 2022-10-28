@@ -59,6 +59,11 @@
   padding-top: calc(250 / 367 * 100%);
   position: relative;
 }
+.card .placeholder-wrap-event {
+  height: 0;
+  padding-top: calc(165 / 367 * 100%);
+  position: relative;
+}
 
 .blog .card .placeholder-wrap {
   height: 0;

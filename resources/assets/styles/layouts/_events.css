@@ -1,3 +1,44 @@
+.container .events-category {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  font-weight: bold;
+  font-family: var(--font-family-sans);
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 10px;
+}
+
+.container .events-category li {
+  margin: 0 24px 0 0;
+  cursor: pointer;
+  color: var(--dark-blue);
+}
+
+.container .events-category li:hover {
+  margin: 0 24px 0 0;
+  cursor: pointer;
+  color: var(--blue);
+}
+
+.container .events-category li.active {
+  color: var(--blue);
+  border-bottom: 1px solid var(--blue);
+}
+
+.container .events-category::-webkit-scrollbar {
+  width: 0.3em;
+  height: 0.3em;
+}
+ 
+.container .events-category::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.container .events-category::-webkit-scrollbar-thumb {
+  background-color: var(--dark-blue);
+}
+
 .single-pcc-event .banner {
   box-shadow: none;
 }
