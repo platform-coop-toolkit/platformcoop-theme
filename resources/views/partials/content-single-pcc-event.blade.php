@@ -5,16 +5,19 @@ $user_has_event = user_has_event($user_id, get_the_ID());
 @endphp
 
 <div class="entry-content" id="content">
-  @if(get_post_meta(get_the_ID(), 'pcc_event_oc_paid', true) && (!is_user_logged_in() || (is_user_logged_in() && $user_is_external_user && !$user_has_event)))
+  @if(get_post_meta(get_the_ID(), 'pcc_event_oc_paid_event', true) && (!is_user_logged_in() || (is_user_logged_in() && $user_is_external_user && !$user_has_event)))
     @if($oc_content = get_post_meta(get_the_ID(), 'pcc_event_oc_content_before_link', true))
       {!! $oc_content !!}
     @endif
-    @if($oc_collective_slug = get_post_meta(get_the_ID(), 'pcc_event_oc_collective_slug', true))
+    @if($oc_event_url = get_post_meta(get_the_ID(), 'pcc_event_oc_event_link', true))
       @php
-      $oc_button_type = get_post_meta(get_the_ID(), 'pcc_event_oc_button_type', true);
-      $oc_button_color = get_post_meta(get_the_ID(), 'pcc_event_oc_button_color', true);
+      $oc_event_embed_url = get_post_meta(get_the_ID(), 'pcc_event_oc_event_embed_link', true);
       @endphp
-      <script src="https://opencollective.com/{{$oc_collective_slug}}/{{$oc_button_type}}/button.js" color="{{$oc_button_color}}"></script>
+      @if($oc_event_embed_url && !empty($oc_event_embed_url))
+        <p><iframe src="{{$oc_event_embed_url}}" style="width: 100%; height: 130vh; border: none;"></iframe></p>
+      @else
+        <p><a class="payment" href="{{$oc_event_url}}" target="_blank">{{ __('Payment', 'pcc') }}</a></p>
+      @endif
     @endif
   @else
     @content
