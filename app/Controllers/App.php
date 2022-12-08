@@ -45,6 +45,15 @@ class App extends Controller
         if ($post->post_type === 'pcc-event') {
             if (isset($wp->query_vars['participants'])) {
                 if (in_array($wp->query_vars['participants'], ['alphabetical', 'random'], true)) {
+                    $event_type = get_post_meta($post->ID, 'pcc_event_type', true);
+                    $event_instructor_type = get_post_meta($post->ID, 'pcc_event_instructor_type', true);
+
+                    if ($event_type === 'course' || $event_type === 'past_course') {
+                        if ($event_instructor_type === 'coach') {
+                            return __('Coaches', 'pcc');
+                        }
+                        return __('Instructors', 'pcc');
+                    }
                     return __('Participants', 'pcc');
                 }
                 $person = get_page_by_path(
