@@ -194,9 +194,17 @@
 .single-pcc-event .class-heading span p {
   margin-top: 0;
   margin-bottom: var(--spacing-14);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-xxs);
   font-weight: var(--semibold);
   color: var(--dark-blue);
+}
+
+.single-pcc-event .class-heading span p:first-child {
+  margin-right: var(--spacing-6);
+}
+
+.single-pcc-event .class-heading span p:last-child {
+  margin-left: var(--spacing-6);
 }
 
 .single-pcc-event .class-topics {
@@ -298,6 +306,10 @@
 
   .single-pcc-event .session__info {
     grid-column: 3 / 9;
+  }
+
+  .single-pcc-event .class-heading span p {
+    font-size: var(--font-size-small);
   }
 }
 
