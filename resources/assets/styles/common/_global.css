@@ -112,7 +112,7 @@ a {
   text-decoration: none;
 }
 
-a:not([href*="platform.coop"]):not([href*="localhost"]):not([href^="#"]):not([href^="/"])::after {
+a:not([href*="platform.coop"]):not([href*="localhost"]):not([href*="pcc.local"]):not([href^="#"]):not([href^="/"])::after {
   content: "\e900";
   /* stylelint-disable */
   font-family: "pcc";
