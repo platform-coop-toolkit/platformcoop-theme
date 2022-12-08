@@ -260,6 +260,36 @@ add_action('init', function () {
         'top'
     );
     add_rewrite_rule(
+        '^events/([^/]+)/instructors/?$',
+        'index.php?pcc-event=$matches[1]&participants=random',
+        'top'
+    );
+    add_rewrite_rule(
+        '^events/([^/]+)/instructors/alphabetical/?$',
+        'index.php?pcc-event=$matches[1]&participants=alphabetical',
+        'top'
+    );
+    add_rewrite_rule(
+        '^events/([^/]+)/instructors/([^/]+)/?$',
+        'index.php?pcc-person=$matches[2]&event=$matches[1]',
+        'top'
+    );
+    add_rewrite_rule(
+        '^events/([^/]+)/coaches/?$',
+        'index.php?pcc-event=$matches[1]&participants=random',
+        'top'
+    );
+    add_rewrite_rule(
+        '^events/([^/]+)/coaches/alphabetical/?$',
+        'index.php?pcc-event=$matches[1]&participants=alphabetical',
+        'top'
+    );
+    add_rewrite_rule(
+        '^events/([^/]+)/coaches/([^/]+)/?$',
+        'index.php?pcc-person=$matches[2]&event=$matches[1]',
+        'top'
+    );
+    add_rewrite_rule(
         '^events/([^/]+)/program/?$',
         'index.php?pcc-event=$matches[1]&program=yes',
         'top'
