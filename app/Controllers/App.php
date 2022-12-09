@@ -167,9 +167,17 @@ USA', 'pcc');
         } elseif ($post->post_parent) {
             // We have a parent to link back to.
             $url = get_the_permalink($post->post_parent);
-            $label = ($post->post_type === 'pcc-event') ?
-                __('Event', 'pcc') :
+
+            if ($post->post_type === 'pcc-event') {
+                $event_type = get_post_meta($post->post_parent, 'pcc_event_type', true);
+                if ($event_type === 'course' || $event_type === 'past_course') {
+                    $label = __('Course', 'pcc');
+                } else {
+                    $label = __('Event', 'pcc');
+                }
+            } else {
                 get_the_title($post->post_parent);
+            }
             $hide_back_to = ($post->post_type === 'pcc-event') ? false : true;
         } elseif (is_home()) {
             $home = get_post(get_option('page_for_posts'));
