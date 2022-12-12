@@ -81,16 +81,29 @@ class SinglePccEvent extends Controller
         return $output;
     }
 
-    public static function sessionVenue($id)
+    public static function sessionVenue($id, $parent_id)
     {
-        $venue_name = get_post_meta($id, 'pcc_event_venue', true);
-        $venue_street_address = get_post_meta($id, 'pcc_event_venue_street_address', true);
-        if ($venue_name && $venue_street_address) {
-            return implode('<br />', [nl2br($venue_name), $venue_street_address]);
-        } elseif ($venue_name) {
-            return nl2br($venue_name);
+        $formats = [
+            'async' => __('Online Asynchronous', 'pcc'),
+            'sync' => __('Online Synchronous', 'pcc'),
+            'async_sync' => __('Online Asynchronous and Synchronous', 'pcc'),
+        ];
+
+        $parent_event_format = get_post_meta($parent_id, 'pcc_event_format', true);
+
+        if ($parent_event_format === 'not_online' || $parent_event_format == null) {
+            $venue_name = get_post_meta($id, 'pcc_event_venue', true);
+            $venue_street_address = get_post_meta($id, 'pcc_event_venue_street_address', true);
+            if ($venue_name && $venue_street_address) {
+                return implode('<br />', [nl2br($venue_name), $venue_street_address]);
+            } elseif ($venue_name) {
+                return nl2br($venue_name);
+            }
+            return false;
+            
         }
-        return false;
+
+        return $formats[ $parent_event_format ];
     }
 
 
@@ -237,6 +250,25 @@ class SinglePccEvent extends Controller
             'icde' => __('ICDE  Event', 'pcc'),
         ];
         return $types[ $type ] ?? false;
+    }
+
+    public function eventFormat()
+    {
+        global $id;
+
+        $formats = [
+            'async' => __('Online Asynchronous', 'pcc'),
+            'sync' => __('Online Synchronous', 'pcc'),
+            'async_sync' => __('Online Asynchronous and Synchronous', 'pcc'),
+        ];
+
+        $event_format = get_post_meta($id, 'pcc_event_format', true);
+
+        if ($event_format === 'not_online' || $event_format == null) {
+            return $this->eventVenue();
+        }
+
+        return $formats[ $event_format ];
     }
 
     public function eventVenue()
