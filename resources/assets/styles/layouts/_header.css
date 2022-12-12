@@ -447,8 +447,13 @@ body .banner .nav .menu-item--languages button svg {
 
   body .banner .nav [aria-current]:hover,
   body .banner .nav .current-menu-parent button:hover {
+    color: var(--dark-mint);
     background-color: var(--white);
     border-left-color: transparent;
+  }
+
+  body .banner .nav .current-menu-parent button:hover .icon {
+    background-color: var(--dark-mint);
   }
 
   body .banner .nav [aria-current]:hover::after,
