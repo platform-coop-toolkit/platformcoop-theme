@@ -101,7 +101,7 @@
   display: inline-block;
 }
 
-.single-pcc-event .event-header .address {
+.single-pcc-event .event-header .address, .single-pcc-event .event-header .price  {
   margin-top: 0;
 }
 
@@ -267,7 +267,7 @@
     position: relative;
   }
 
-  .single-pcc-event .event-header .meta p.address {
+  .single-pcc-event .event-header .meta p,  {
     margin-top: var(--spacing-12);
   }
 

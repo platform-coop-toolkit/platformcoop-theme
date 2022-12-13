@@ -20,6 +20,7 @@ class CustomFields
         include 'fields/pages.php';
 
         pages();
+        events();
     }
 }
 

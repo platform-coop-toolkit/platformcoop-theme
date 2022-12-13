@@ -24,3 +24,23 @@ function pages() {
                 ->set_options($categories)
         ]);
 }
+
+function events() {
+    $events_types = [
+        'all' => __('All', 'pcc-framework'),
+        'community' => __('Community Event', 'pcc-framework'),
+        'conference' => __('PCC Conference', 'pcc-framework'),
+        'pcc' => __('PCC Event', 'pcc-framework'),
+        'icde' => __('ICDE Event', 'pcc-framework'),
+        'course' => __('Course', 'pcc-framework'),
+        'past_course' => __('Past Course', 'pcc-framework'),
+    ];
+ 
+    Container::make('post_meta', __('PCC Events'))
+        ->where('post_type', '=', 'page')
+        ->where('post_template', '=', 'views/events.blade.php')
+        ->add_fields([
+            Field::make('select', 'crb_event_type', __('Select a event type'))
+                ->set_options($events_types)
+        ]);
+}
