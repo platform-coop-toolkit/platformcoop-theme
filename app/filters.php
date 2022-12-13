@@ -222,7 +222,7 @@ add_filter('bladesvg', function () {
 });
 
 add_filter('query_vars', function ($vars) {
-    return ['participants', 'program', 'event', 'org', 'clear'] + $vars;
+    return ['participants', 'instructors', 'coaches','program', 'event', 'org', 'clear'] + $vars;
 });
 
 // TODO: Add rel="canonical" for participants pointing back to people page.

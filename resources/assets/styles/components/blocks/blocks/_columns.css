@@ -1,4 +1,5 @@
-.wp-block-columns {
+.wp-block-columns,
+.wp-block-no-columns {
   border-top: solid var(--border-medium) var(--dark-blue);
   margin: 0 auto;
   padding: var(--spacing-20) 0 0;

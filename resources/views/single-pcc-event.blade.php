@@ -16,7 +16,7 @@
       @endif
     </div>
     @endif
-    @if($post->post_parent || $event_type === 'conference')
+    @if($post->post_parent || $event_type === 'conference' || $event_type === 'course' || $event_type === 'past_course')
       @include('partials.event-ribbon')
     @endif
     <header class="event-header">

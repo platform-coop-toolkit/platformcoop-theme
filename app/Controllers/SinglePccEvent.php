@@ -276,9 +276,54 @@ class SinglePccEvent extends Controller
         return array_filter($sponsors);
     }
 
+    public function eventClasses()
+    {
+        $classes = (array) get_post_meta(get_the_ID(), 'pcc_event_classes', true);
+        return array_filter($classes);
+    }
+
+    public function eventInstructorType()
+    {
+        return get_post_meta(get_the_ID(), 'pcc_event_instructor_type', true);
+    }
+
+    public function eventTimezone()
+    {
+        return get_post_meta(get_the_ID(), 'pcc_event_timezone', true);
+    }
+
     public function eventRibbon()
     {
         global $post, $wp;
+
+        $event_type = get_post_meta($post->ID, 'pcc_event_type', true);
+
+        if ($event_type === 'course' || $event_type === 'past_course') {
+            return [
+                [
+                    'class' => false,
+                    'rel' =>
+                        (
+                            !$post->post_parent &&
+                            !isset($wp->query_vars['private'])
+                        ) ?
+                        'current' :
+                        false,
+                    'link' => ($post->post_parent) ? get_permalink($post->post_parent) : get_permalink($post),
+                    'label' => __('Home', 'pcc'),
+                ],
+                [
+                    'class' => ($post->post_parent) ? 'parent' : '',
+                    'rel' => (isset($wp->query_vars['private']) && $wp->query_vars['private'] === 'yes') ?
+                        'current' :
+                        false,
+                    'link' => ($post->post_parent) ?
+                        get_permalink($post->post_parent) . 'private/' :
+                        get_permalink($post) . 'private/',
+                    'label' => __('Private', 'pcc'),
+                ],
+            ];
+        }
 
         return [
             [
@@ -292,7 +337,7 @@ class SinglePccEvent extends Controller
                     'current' :
                     false,
                 'link' => ($post->post_parent) ? get_permalink($post->post_parent) : get_permalink($post),
-                'label' => (get_post_meta($post->ID, 'pcc_event_type', true) === 'conference') ?
+                'label' => ($event_type === 'conference') ?
                     __('Conference', 'pcc') :
                     __('Event', 'pcc'),
             ],

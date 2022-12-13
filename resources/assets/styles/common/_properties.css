@@ -61,6 +61,8 @@
   --font-family-serif: "Noto Serif", serif;
 
   /* Font Sizes */
+  --font-size-xxs: calc(8 / var(--multiplier) * var(--base));
+  --font-size-xs: calc(12 / var(--multiplier) * var(--base));
   --font-size-small: calc(14 / var(--multiplier) * var(--base));
   --font-size-base: 1rem;
   --font-size-moderate: calc(18 / var(--multiplier) * var(--base));
