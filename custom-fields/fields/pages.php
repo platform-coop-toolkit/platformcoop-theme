@@ -33,7 +33,7 @@ function events() {
         'pcc' => __('PCC Event', 'pcc-framework'),
         'icde' => __('ICDE Event', 'pcc-framework'),
         'course' => __('Course', 'pcc-framework'),
-        'past' => __('Past Course', 'pcc-framework'),
+        'past_course' => __('Past Course', 'pcc-framework'),
     ];
  
     Container::make('post_meta', __('PCC Events'))
