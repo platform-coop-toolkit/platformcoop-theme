@@ -65,6 +65,7 @@
 
 .blog__details .title a,
 .blog__details time,
+.blog__details .course-price,
 .pcc-story__details .title a,
 .pcc-story__details .card__region,
 .project__details .title,
@@ -83,7 +84,8 @@
 }
 
 .pcc-story__details,
-.blog__details time {
+.blog__details time,
+.blog__details .course-price {
   color: var(--warm-grey);
   font-family: var(--font-family-serif);
   font-size: var(--font-size-small);
@@ -145,6 +147,23 @@
 .single-post article p > iframe {
   max-width: 100%;
   width: 100%;
+}
+
+.share-buttons {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+  align-items: center;
+  padding-block: var(--spacing-30);
+}
+
+.share-buttons a {
+  border-bottom: 0;
+}
+
+.share-buttons a:not(:last-child),
+.share-buttons div  {
+  margin-right: var(--spacing-12);
 }
 
 /* Tablet */
