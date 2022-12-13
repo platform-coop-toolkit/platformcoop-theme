@@ -235,6 +235,36 @@ class SinglePccEvent extends Controller
         return get_post_meta($post->post_parent, 'pcc_event_type', true);
     }
 
+    public function eventLanguage()
+    {
+        global $id;
+        $event_type = $this->eventType();
+
+        $languages = [
+            'en'=> 'English',
+            'pt'=> 'Portuguese',
+            'es'=> 'Spanish',
+            'it'=> 'Italian',
+            'tr'=> 'Turkish',
+            'ch'=> 'Chinese',
+            'th'=> 'Thai',
+        ];
+
+        if ($event_type === 'course' || $event_type === 'past_course') {
+            $event_language = get_post_meta($id, 'pcc_event_language', true);
+
+            if ($event_language) {
+                $event_second_language = get_post_meta($id, 'pcc_event_second_language', true);
+
+                return $event_second_language !== 'none' && $event_second_language !== null ? 
+                    $languages[ $event_language ] . ' + ' . $languages[ $event_second_language ] . __(' (Live Transl.)', 'pcc') :
+                    $languages[ $event_language ];
+            }
+        }
+
+        return false;
+    }
+
     public function eventTypeLabel()
     {
         global $id;
@@ -328,6 +358,11 @@ class SinglePccEvent extends Controller
     public function eventTimezone()
     {
         return get_post_meta(get_the_ID(), 'pcc_event_timezone', true);
+    }
+
+    public function eventCertificate()
+    {
+        return get_post_meta(get_the_ID(), 'pcc_event_certificate', true);
     }
 
     public function eventRibbon()
@@ -481,7 +516,7 @@ class SinglePccEvent extends Controller
         return get_post_meta($event_id, 'pcc_event_oc_paid_event', true);
     }
 
-    function userPurchasedEvent()
+    public function userPurchasedEvent()
     {
         global $post;
 
