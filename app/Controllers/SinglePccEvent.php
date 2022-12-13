@@ -81,16 +81,29 @@ class SinglePccEvent extends Controller
         return $output;
     }
 
-    public static function sessionVenue($id)
+    public static function sessionVenue($id, $parent_id)
     {
-        $venue_name = get_post_meta($id, 'pcc_event_venue', true);
-        $venue_street_address = get_post_meta($id, 'pcc_event_venue_street_address', true);
-        if ($venue_name && $venue_street_address) {
-            return implode('<br />', [nl2br($venue_name), $venue_street_address]);
-        } elseif ($venue_name) {
-            return nl2br($venue_name);
+        $formats = [
+            'async' => __('Online Asynchronous', 'pcc'),
+            'sync' => __('Online Synchronous', 'pcc'),
+            'async_sync' => __('Online Asynchronous and Synchronous', 'pcc'),
+        ];
+
+        $parent_event_format = get_post_meta($parent_id, 'pcc_event_format', true);
+
+        if ($parent_event_format === 'not_online' || $parent_event_format == null) {
+            $venue_name = get_post_meta($id, 'pcc_event_venue', true);
+            $venue_street_address = get_post_meta($id, 'pcc_event_venue_street_address', true);
+            if ($venue_name && $venue_street_address) {
+                return implode('<br />', [nl2br($venue_name), $venue_street_address]);
+            } elseif ($venue_name) {
+                return nl2br($venue_name);
+            }
+            return false;
+            
         }
-        return false;
+
+        return $formats[ $parent_event_format ];
     }
 
 
@@ -216,6 +229,12 @@ class SinglePccEvent extends Controller
         return get_post_meta($id, 'pcc_event_type', true);
     }
 
+    public function parentEventType()
+    {
+        global $post;
+        return get_post_meta($post->post_parent, 'pcc_event_type', true);
+    }
+
     public function eventTypeLabel()
     {
         global $id;
@@ -231,6 +250,25 @@ class SinglePccEvent extends Controller
             'icde' => __('ICDE  Event', 'pcc'),
         ];
         return $types[ $type ] ?? false;
+    }
+
+    public function eventFormat()
+    {
+        global $id;
+
+        $formats = [
+            'async' => __('Online Asynchronous', 'pcc'),
+            'sync' => __('Online Synchronous', 'pcc'),
+            'async_sync' => __('Online Asynchronous and Synchronous', 'pcc'),
+        ];
+
+        $event_format = get_post_meta($id, 'pcc_event_format', true);
+
+        if ($event_format === 'not_online' || $event_format == null) {
+            return $this->eventVenue();
+        }
+
+        return $formats[ $event_format ];
     }
 
     public function eventVenue()
@@ -296,9 +334,32 @@ class SinglePccEvent extends Controller
     {
         global $post, $wp;
 
-        $event_type = get_post_meta($post->ID, 'pcc_event_type', true);
+        $event_type = $this->eventType();
+
+        if ($post->post_parent > 0) {
+            $event_type = get_post_meta($post->post_parent, 'pcc_event_type', true);
+        }
 
         if ($event_type === 'course' || $event_type === 'past_course') {
+            $event_children_ribbons = [];
+
+            if ($this->userCanAccess()) {
+                $children_events = get_children([
+                    'order'          => 'DESC',
+                    'post_parent'    => $post->post_parent > 0 ? $post->post_parent : $post->ID,
+                    'post_type' => 'pcc-event',
+                    'numberposts' => -1,
+                ]);
+    
+                foreach ($children_events as $index => $child_event) {
+                    $event_children_ribbons[] = [
+                        'class' => ($post->post_parent) ? 'parent' : '',
+                        'link' => get_permalink($child_event->ID),
+                        'label' => $index === array_key_first($children_events) ? __('Private', 'pcc') : $child_event->post_title,
+                    ];
+                }
+            }
+            
             return [
                 [
                     'class' => false,
@@ -312,16 +373,7 @@ class SinglePccEvent extends Controller
                     'link' => ($post->post_parent) ? get_permalink($post->post_parent) : get_permalink($post),
                     'label' => __('Home', 'pcc'),
                 ],
-                [
-                    'class' => ($post->post_parent) ? 'parent' : '',
-                    'rel' => (isset($wp->query_vars['private']) && $wp->query_vars['private'] === 'yes') ?
-                        'current' :
-                        false,
-                    'link' => ($post->post_parent) ?
-                        get_permalink($post->post_parent) . 'private/' :
-                        get_permalink($post) . 'private/',
-                    'label' => __('Private', 'pcc'),
-                ],
+                ...$event_children_ribbons,
             ];
         }
 
@@ -406,6 +458,41 @@ class SinglePccEvent extends Controller
             $previous_day = $day;
         }
         return $result;
+    }
+
+    public function userCanAccess()
+    {
+        if (!$this->isPaidEvent()) return true;
+
+        if (!is_user_logged_in()) return false;
+
+        $user_is_external_user = user_has_role('external_user');
+        $user_has_event = $this->userPurchasedEvent();
+
+        return !$user_is_external_user || ($user_is_external_user && $user_has_event);
+    }
+
+    public function isPaidEvent()
+    {
+        global $post;
+
+        $event_id = $post->post_parent ? $post->post_parent : $post->ID;
+
+        return get_post_meta($event_id, 'pcc_event_oc_paid_event', true);
+    }
+
+    function userPurchasedEvent()
+    {
+        global $post;
+
+        $user_id = get_current_user_id();
+        $event_id = $post->post_parent ? $post->post_parent : $post->ID;
+
+        $user_event_ids = get_user_meta($user_id, 'event_ids', true);
+        if (is_array($user_event_ids)) {
+            return in_array($event_id, $user_event_ids);
+        }
+        return false;
     }
 
     public static function isUpcoming()

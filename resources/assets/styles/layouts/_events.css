@@ -97,8 +97,33 @@
   margin-top: var(--spacing-18);
 }
 
-.single-pcc-event .event-header .meta svg {
-  display: inline-block;
+.single-pcc-event .event-header .meta p {
+  margin-left: var(--spacing-6);
+  line-height: 1.2;
+}
+
+.single-pcc-event .event-header .meta ul {
+  list-style: none;
+  padding: 0;
+}
+
+.single-pcc-event .event-header .meta li {
+  display: flex;
+  align-items: baseline;
+}
+
+.single-pcc-event .event-header .meta li + li {
+  margin-top: var(--spacing-6);
+}
+
+.single-pcc-event .event-header .meta li svg {
+  width: 15px;
+}
+
+.single-pcc-event .event-header .meta li span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .single-pcc-event .event-header .address, .single-pcc-event .event-header .price  {
@@ -262,13 +287,12 @@
     justify-content: center;
   }
 
-  .single-pcc-event .event-header .meta p {
-    margin-left: var(--spacing-24);
-    position: relative;
+  .single-pcc-event .event-header .meta {
+    margin-top: var(--spacing-24);
   }
-
-  .single-pcc-event .event-header .meta p,  {
-    margin-top: var(--spacing-12);
+  
+  .single-pcc-event .event-header .meta li + li {
+    margin-top: var(--spacing-10);
   }
 
   .single-pcc-event .pcc-event .sponsors {

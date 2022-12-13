@@ -109,29 +109,14 @@ require get_template_directory() . '/../custom-fields/init.php';
  * @param string $role_name
  * @return bool
  */
-function user_has_role($user_id, $role_name)
+function user_has_role($role_name)
 {
+    $user_id = get_current_user_id();
+
     if (is_user_logged_in()) {
         $user_meta = get_userdata($user_id);
         $user_roles = $user_meta->roles;
         return in_array($role_name, $user_roles);
-    }
-    return false;
-}
-
-
-/**
- * Checks if the user is included in an event
- *
- * @param int $user_id
- * @param int $event_id
- * @return bool
- */
-function user_has_event($user_id, $event_id)
-{
-    $user_event_ids = get_user_meta($user_id, 'event_ids', true);
-    if (is_array($user_event_ids)) {
-        return in_array($event_id, $user_event_ids);
     }
     return false;
 }

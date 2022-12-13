@@ -37,7 +37,11 @@
   @if(!empty($event_sponsors))
   <div class="wp-block-columns has-2-columns">
     <div class="wp-block-column">
-      <h2>{{ __('Sponsors', 'pcc')}}</h2>
+      @if($event_type === 'course' || $event_type === 'past_course')
+        <h2>{{ __('Partners', 'pcc')}}</h2>
+      @else
+        <h2>{{ __('Sponsors', 'pcc')}}</h2>
+      @endif
     </div>
     <div class="wp-block-column">
       <ul class="sponsors">
@@ -51,7 +55,7 @@
   @if(!empty($event_classes))
   <div class="wp-block-columns has-2-columns">
     <div class="wp-block-column">
-      <h2>{{ __('Learning Journey', 'pcc')}}</h2>
+      <h2>{{ __('Learning', 'pcc')}}<br/>{{ __('Journey', 'pcc')}}</h2>
     </div>
     <div class="wp-block-column">
       <ul class="classes">
