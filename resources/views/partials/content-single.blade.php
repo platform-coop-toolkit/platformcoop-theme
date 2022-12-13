@@ -9,6 +9,7 @@
       <figure>{!! get_the_post_thumbnail($post, 'original') !!}</figure>
     @endif
     @content
+    @include('partials/share-buttons')
   </div>
   <footer>
     @if(get_the_tags())

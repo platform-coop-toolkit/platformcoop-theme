@@ -53,4 +53,5 @@ $user_has_event = user_has_event($user_id, get_the_ID());
     </div>
   </div>
   @endif
+  @include('partials/share-buttons')
 </div>
