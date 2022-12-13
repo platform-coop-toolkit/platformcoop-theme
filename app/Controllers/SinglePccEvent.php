@@ -360,6 +360,11 @@ class SinglePccEvent extends Controller
         return get_post_meta(get_the_ID(), 'pcc_event_timezone', true);
     }
 
+    public function eventCertificate()
+    {
+        return get_post_meta(get_the_ID(), 'pcc_event_certificate', true);
+    }
+
     public function eventRibbon()
     {
         global $post, $wp;

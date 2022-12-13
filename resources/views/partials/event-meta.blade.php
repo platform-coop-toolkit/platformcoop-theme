@@ -11,11 +11,11 @@
     @if($post->post_type == 'pcc-event' && ($event_type == 'course' || $event_type == 'past_course'))
       <li><span>@svg('currency', ['aria-hidden' => 'true'])</span><p translate="no">{!! $event_price ?? 'Free' !!}</p></li>
     @endif
-    @if($event_language)
-    <li><span>@svg('web', ['aria-hidden' => 'true'])</span><p translate="no">{{ $event_language }}</p></li>
+    @if($event_certificate)
+      <li><span>@svg('certificate', ['aria-hidden' => 'true'])</span><p translate="no">{{ __('Certificate Course', 'pcc') }}</p></li>
     @endif
-    <!-- 
-    <li><span>@svg('certificate', ['aria-hidden' => 'true'])</span><p translate="no">Certificate Course</p></li>
-     -->
+    @if($event_language)
+      <li><span>@svg('web', ['aria-hidden' => 'true'])</span><p translate="no">{{ $event_language }}</p></li>
+    @endif
   </ul>
 </div>
