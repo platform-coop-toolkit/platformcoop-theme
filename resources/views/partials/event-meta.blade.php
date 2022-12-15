@@ -9,7 +9,7 @@
       @endif
     @endif
     @if($post->post_type == 'pcc-event' && ($event_type == 'course' || $event_type == 'past_course'))
-      <li><span>@svg('currency', ['aria-hidden' => 'true'])</span><p translate="no">{!! $event_price ?? 'Free' !!}</p></li>
+      <li><span>@svg('currency', ['aria-hidden' => 'true'])</span><p translate="no">{!! $event_price !!}</p></li>
     @endif
     @if($event_certificate)
       <li><span>@svg('certificate', ['aria-hidden' => 'true'])</span><p translate="no">{{ __('Certificate Course', 'pcc') }}</p></li>
