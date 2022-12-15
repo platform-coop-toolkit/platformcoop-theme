@@ -365,6 +365,15 @@ class SinglePccEvent extends Controller
         return get_post_meta(get_the_ID(), 'pcc_event_certificate', true);
     }
 
+    public function eventPrice()
+    {
+        if ($this->isPaidEvent()) {
+            return get_post_meta(get_the_ID(), 'pcc_event_price', true) . __(' USD', 'pcc');
+        }
+
+        return __('Free', 'pcc');
+    }
+
     public function eventRibbon()
     {
         global $post, $wp;
@@ -387,10 +396,16 @@ class SinglePccEvent extends Controller
                 ]);
     
                 foreach ($children_events as $index => $child_event) {
+
+                    $event_parents = get_post_ancestors($child_event->ID);
+                    $event_id = array_pop($event_parents);
+                    $is_paid_event = get_post_meta($event_id, 'pcc_event_price', true);
+                    $ribbon_label = $index === array_key_first($children_events) && $is_paid_event ? __('Private', 'pcc') : $child_event->post_title;
+
                     $event_children_ribbons[] = [
                         'class' => ($post->post_parent) ? 'parent' : '',
                         'link' => get_permalink($child_event->ID),
-                        'label' => $index === array_key_first($children_events) ? __('Private', 'pcc') : $child_event->post_title,
+                        'label' => $ribbon_label,
                     ];
                 }
             }
@@ -511,9 +526,16 @@ class SinglePccEvent extends Controller
     {
         global $post;
 
-        $event_id = $post->post_parent ? $post->post_parent : $post->ID;
+        $event_id = $post->ID;
 
-        return get_post_meta($event_id, 'pcc_event_oc_paid_event', true);
+        if ($post->post_parent) {
+            $event_parents = get_post_ancestors($post->ID);
+            $event_id = array_pop($event_parents);
+        }
+
+        $event_price = get_post_meta($event_id, 'pcc_event_price', true);
+
+        return !empty($event_price);
     }
 
     public function userPurchasedEvent()

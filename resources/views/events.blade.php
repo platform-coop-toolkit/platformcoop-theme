@@ -28,9 +28,9 @@
   foreach ($child_posts as $child_id) {
     $event_parents = get_post_ancestors($child_id);
     $parent_id = array_pop($event_parents);
-    $is_paid_event = get_post_meta($parent_id, 'pcc_event_oc_paid_event', true);
+    $is_paid_event = get_post_meta($parent_id, 'pcc_event_price', true);
 
-    if ($is_paid_event) {
+    if (!empty($is_paid_event)) {
       $exclude_paid_event_children[] = $child_id;
     }
   }
