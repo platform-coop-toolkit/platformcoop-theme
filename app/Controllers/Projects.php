@@ -28,9 +28,10 @@ class Projects extends Controller
                   'slug' => get_post_field('post_name', $p->ID),
                   'page_link_id' => (!empty(get_page_by_path($p->post_name))) ? get_page_link($p->ID) : '#',
                 ];
-                $output[$p->ID]['content'] = (strlen($p->post_content) > 200) ?
-                    substr($p->post_content, 0, 200).'...' :
-                    $p->post_content;
+                $post_content = preg_replace("~<!--(.*?)-->~s", "", $p->post_content);
+                $output[$p->ID]['content'] = (strlen($post_content) > 200) ?
+                    substr($post_content, 0, 200).'...' :
+                    $post_content;
                     
                 $page_id = null;
             }
