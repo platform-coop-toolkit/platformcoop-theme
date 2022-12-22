@@ -30,14 +30,15 @@
   border-top-color: var(--yellow);
 }
 
-.pcc-event {
+.pcc-event.card {
   border-top: solid var(--border-medium) var(--light-red);
+  box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.4);
 }
 
 .archive .card:hover,
 .blog .card:hover,
 .pcc-story .card:hover,
-.pcc-event,
+.pcc-event.card:hover,
 .projects .card:hover {
   border-top: solid var(--border-medium) var(--red);
   box-shadow: 0 0 var(--spacing-5) rgba(0, 0, 0, 0.4);
