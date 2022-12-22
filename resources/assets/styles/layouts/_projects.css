@@ -16,7 +16,7 @@
 }
 
 .pcc-project .project-header h1 {
-  color: var(--white);
+  color: #333F3A;
   position: absolute;
   top: 12rem;
 }
