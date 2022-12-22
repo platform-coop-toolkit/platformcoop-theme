@@ -6,7 +6,6 @@
   global $paged;
   $curpage = $paged ? $paged : 1;
   $event_type = carbon_get_the_post_meta('crb_event_type') ?? -1;
-  $exclude_paid_event_children = [];
 
   if ($event_type != 'all') {
     $meta_query = array(
@@ -18,23 +17,6 @@
     );
   }
 
-  $child_posts = get_posts([
-    'post_type' => 'pcc-event',
-    'posts_per_page' => -1,
-    'post_parent__not_in' => [0],
-    'fields' => 'ids',
-  ]);
-
-  foreach ($child_posts as $child_id) {
-    $event_parents = get_post_ancestors($child_id);
-    $parent_id = array_pop($event_parents);
-    $is_paid_event = get_post_meta($parent_id, 'pcc_event_price', true);
-
-    if (!empty($is_paid_event)) {
-      $exclude_paid_event_children[] = $child_id;
-    }
-  }
-
   $args_posts = [
     'post_type' => 'pcc-event',
     'posts_per_page' => 12,
@@ -42,7 +24,7 @@
     'order'   => 'DESC',
     'paged' => get_query_var('paged', 1),
     'meta_query' => $meta_query,
-    'post__not_in' => $exclude_paid_event_children,
+    'post_parent' => 0
   ];
 
   $events = new WP_Query($args_posts);
